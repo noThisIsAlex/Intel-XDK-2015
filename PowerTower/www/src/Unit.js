@@ -1,4 +1,4 @@
-var Unit = Layer.extend({
+var Unit = cc.Layer.extend({
     // A unit is anything with health
     // Extends from layer so that units can have moving parts
     ctor: function(health) {
