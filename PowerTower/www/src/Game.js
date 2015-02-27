@@ -9,8 +9,8 @@ var GameLayer = cc.Layer.extend({
         // Render the game field
         // Use a tilemap
 
-        /*var tilemap = new cc.TMXTiledMap(asset.map_01);
-        this.addChild(tilemap, 1);*/
+        var tilemap = new cc.TMXTiledMap(asset.map_01);
+        this.addChild(tilemap, 1);
 
         
         // Add all the game objects to the layer

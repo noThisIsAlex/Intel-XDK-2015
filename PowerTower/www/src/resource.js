@@ -3,8 +3,7 @@ var asset = {
     CloseNormal_png : "asset/CloseNormal.png",
 
     CloseSelected_png : "asset/CloseSelected.png"//,
-    //map_01 : "asset/map_01.tmx"
-
+    map_01 : "asset/tiled_sprites/Map_01.tmx"
 };
 
 var g_resources = [];
