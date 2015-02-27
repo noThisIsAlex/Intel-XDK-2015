@@ -8,7 +8,7 @@ var Unit = cc.Layer.extend({
     health: 100,
     takeDamage: function(amount) {
         this.health -= amount;
-        if (health <= 0) {
+        if (this.health <= 0) {
             this.destroy();
         }
     },

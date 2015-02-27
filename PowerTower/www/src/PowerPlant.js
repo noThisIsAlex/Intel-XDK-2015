@@ -1,9 +1,9 @@
 var PowerPlant = Unit.extend({
     ctor: function() { 		
- 		this._super(health)	       
- 		this.power = power
- 		this.powerRate = powerRate
- 		this.powerMax = powerMax
+        this._super(health)	       
+        this.power = power
+        this.powerRate = powerRate
+        this.powerMax = powerMax
     },
     health: 10000,
     healthMax: 10000,
@@ -17,7 +17,7 @@ var PowerPlant = Unit.extend({
     	powerRateInc: 10,
     	healthMaxInc: 100,
     	healthRateInc: 50
-    }
+    },
     update: function() {
     	power += powerRate
     	if (power > powerMax) {

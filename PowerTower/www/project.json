@@ -15,6 +15,8 @@
         "src/Game.js",
         "src/Unit.js",
         "src/Enemy.js",
-        "src/Tower.js"
+        "src/Tower.js",
+        "src/PowerPlant.js",
+        "src/HealthBar.js"
     ]
 }
