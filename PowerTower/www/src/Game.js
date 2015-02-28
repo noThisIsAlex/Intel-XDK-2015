@@ -4,6 +4,7 @@ var GameLayer = cc.Layer.extend({
     powerPlant:null,
     enemies: null,
     towers: null,
+    enemies: [],
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -23,7 +24,8 @@ var GameLayer = cc.Layer.extend({
         // Add all the game objects to the layer
         // Get the properties from the tmx file
         
-        this.enemies = [];
+        // WRITE CODE HERE
+
         var enemy = new Enemy(100);
 
         this.enemies.push(enemy);
@@ -71,13 +73,23 @@ var GameLayer = cc.Layer.extend({
         tower.x = 140;
         tower.y = 250;
         this.addChild(tower, 5);
+
         this.towers.push(tower);*/
+        
+        this.schedule(function(){
+             var enemy = new Enemy(100);
+        this.enemies.push(enemy);
+        this.addChild(enemy, 6);
+        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        }, 1.0);
+
+        this.towers.push(tower);
     },
     update: function() {
-        var i, j;
+        var i, j, enemy;
         
         for (i = 0; i < this.enemies.length; ++i) {
-            var enemy = this.enemies[i];
+            enemy = this.enemies[i];
             var dist = distance(this.powerPlant, enemy);
             if (!enemy.attacking && dist < 40) {
                 enemy.actionManager.pauseTarget(enemy);
@@ -98,7 +110,7 @@ var GameLayer = cc.Layer.extend({
             var tower = this.towers[j];
             --tower.ac;
             for (i = 0; i < this.enemies.length; ++i) {
-                var enemy = this.enemies[i];
+                enemy = this.enemies[i];
                 if (distance(tower, enemy) < tower.range) {
                     if (tower.ac <= 0 && tower.energy >= tower.energyUsage) {                        
                         tower.energy -= tower.energyUsage;
