@@ -16,16 +16,13 @@ var Enemy = Unit.extend({
             var startPoint = object.polylinePoints[i];
             startPoint.x = parseInt(startPoint.x);
             startPoint.y = parseInt(startPoint.y);
-            console.log(startPoint);
             var endPoint = object.polylinePoints[i + 1];
             endPoint.x = parseInt(endPoint.x);
             endPoint.y = parseInt(endPoint.y);
-            console.log(endPoint);
             var lineLength = Math.sqrt((endPoint.x - startPoint.x) * (endPoint.x - startPoint.x) + (endPoint.y - startPoint.y) * (endPoint.y - startPoint.y));
             actions.push(cc.moveBy(lineLength / this.speed, endPoint.x - startPoint.x, -(endPoint.y - startPoint.y)));
         }
         var sequence = cc.sequence(actions);
-        console.log(sequence);
         this.runAction(sequence);
     }
 });
