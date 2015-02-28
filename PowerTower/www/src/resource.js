@@ -5,11 +5,7 @@ var asset = {
     map_01 : "asset/tiled_sprites/Map_test01.tmx",
     terrian_tileset : "asset/tiled_sprites/terrain_tiles.png",
     enemy : "asset/tiled_sprites/soldier.png",
-<<<<<<< HEAD
-    powerplant_base : "asset/tiled_sprites/power_plant.png",
-=======
     powerplant_base: "asset/tiled_sprites/power_plant.png",
->>>>>>> f908ffe91bafc72027bc5d276d554dd4eba7c57c
     powerplantlv1: "asset/tiled_sprites/power_plant_lv1.png",
     powerplantlv2: "asset/tiled_sprites/power_plant_lv2.png",
     powerplantlv3: "asset/tiled_sprites/power_plant_lv3.png",
