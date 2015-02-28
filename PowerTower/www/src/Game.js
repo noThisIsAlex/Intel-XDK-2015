@@ -59,7 +59,7 @@ var GameLayer = cc.Layer.extend({
             this.addChild(tower, 5);
         }
 
-        this.powerPlant.powerRate = this.towers.length * (this.tower.energyUsage * 1.5);
+        this.powerPlant.powerRate = this.towers.length * (this.towers[0].energyUsage / 2);
         console.log(this.powerPlant.powerRate + "<- POWER RATE")
         
         this.powerPlant.x = parseInt(path.polylinePoints[path.polylinePoints.length - 1].x) + path.x;
@@ -121,6 +121,7 @@ var GameLayer = cc.Layer.extend({
             --tower.ac;
             if (tower.on) {
                 towersOn++
+                console.log("TOWER ON " + towersOn);
             }
             for (i = 0; i < this.enemies.length; ++i) {
                 enemy = this.enemies[i];
@@ -148,15 +149,19 @@ var GameLayer = cc.Layer.extend({
         }
         
         var totalEnergyUsed = 0;
-        console.log(this.powerPlant.powerRate + "POWER RATE");
-        for (k = 0; j < this.towers.length; k++) {
+        //console.log(this.powerPlant.powerRate + "POWER RATE");
+        for (k = 0; k < this.towers.length; k++) {
+            console.log(this.towers[k].on + " TOWER ON?");
             if (this.towers[k].on) {
+                console.log(this.towers[k].energyMax + " ENERGY MAX");
                 if (towersOn >= 1 && this.towers[k].energy < this.towers[k].energyMax) {
-                    this.towers[k].energy += (this.powerPlant.powerRate / towersOn);            
-                    totalEnergyUsed += this.powerPlant.powerRate / towersOn;
-                } else if (towersOn >= 1)
-                    this.towers[k].energy = this.powerPlant.energyMax;
-                    totalEnergyUsed += this.powerPlant.powerRate / towersOn;
+                    this.towers[k].energy += (this.powerPlant.powerRate / towersOn) - this.towers[k].energyUsage;            
+                    totalEnergyUsed += this.powerPlant.powerRate / towersOn + this.towers[k].energyUsage;
+                    console.log(totalEnergyUsed + "NOT MAX");
+                } else if (towersOn >= 1) {
+                    this.towers[k].energy = this.towers[k].energyMax;
+                    totalEnergyUsed += this.powerPlant.powerRate / towersOn + this.towers[k].energyUsage;
+                    console.log(totalEnergyUsed + "MAX");
                 }
                 towersOn++;
             }
