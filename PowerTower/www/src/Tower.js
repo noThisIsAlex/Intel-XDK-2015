@@ -46,6 +46,7 @@ var Tower = cc.Layer.extend({
     },
 
     switchState: function(event) {
+        
         if (this.on == true) {
             event.getCurrentTarget().sprite.setTexture(asset.tower_upoff);
             this.on = false;            
