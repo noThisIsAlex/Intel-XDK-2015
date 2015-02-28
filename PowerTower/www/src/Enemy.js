@@ -2,9 +2,10 @@ var Enemy = Unit.extend({
     sprite: null,
     speed: 50,
     ctor: function(health) {
-        this._super(health);
+        this._super(health, health);
         this.sprite = new cc.Sprite(asset.enemy);
         this.addChild(this.sprite, 1);
+        this.healthBar.y = 34;
     },
     beginMoveAlongPathObject: function(object) {
         // Set the enemy position to the origin
@@ -16,16 +17,17 @@ var Enemy = Unit.extend({
             var startPoint = object.polylinePoints[i];
             startPoint.x = parseInt(startPoint.x);
             startPoint.y = parseInt(startPoint.y);
-            console.log(startPoint);
             var endPoint = object.polylinePoints[i + 1];
             endPoint.x = parseInt(endPoint.x);
             endPoint.y = parseInt(endPoint.y);
-            console.log(endPoint);
             var lineLength = Math.sqrt((endPoint.x - startPoint.x) * (endPoint.x - startPoint.x) + (endPoint.y - startPoint.y) * (endPoint.y - startPoint.y));
             actions.push(cc.moveBy(lineLength / this.speed, endPoint.x - startPoint.x, -(endPoint.y - startPoint.y)));
         }
         var sequence = cc.sequence(actions);
-        console.log(sequence);
         this.runAction(sequence);
+    },
+    update: function() {
+        //this.health--;
+        //this.healthBar.displayHealth(this.health, this.totalHealth);
     }
 });
