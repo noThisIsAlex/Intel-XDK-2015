@@ -1,9 +1,11 @@
 var PowerPlant = Unit.extend({
     ctor: function() { 		
-        this._super(this.health)	       
-        this.power = power
-        this.powerRate = powerRate
-        this.powerMax = powerMax
+        this._super(this.health);	       
+        this.power = power;
+        this.powerRate = powerRate;
+        this.powerMax = powerMax;
+        this.sprite = new cc.Sprite(asset.powerplant);
+        this.addChild(this.sprite, 1);
     },
     health: 10000,
     healthMax: 10000,
@@ -11,7 +13,7 @@ var PowerPlant = Unit.extend({
     power: 1000,
     powerRate: 1,
     powerMax: 1000,
-    sprite: 'placeholder',
+    sprite: null,
     upgradeLevel: {
     	powerMaxInc: 100,
     	powerRateInc: 10,
