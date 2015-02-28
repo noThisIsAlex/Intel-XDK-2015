@@ -8,7 +8,7 @@ var asset = {
     powerplantlv2: "asset/tiled_sprites/Power Plant.png",
     powerplantlv1: "asset/tiled_sprites/Power Plant lvl 1.png",
     powerplantlv3: "asset/tiled_sprites/Power Plant lvl 3.png",
-    tower: "asset/tiled_sprites/Tower.png"
+    tower: "asset/tiled_sprites/Basic_Tower_On.png"
 };
 
 var g_resources = [];
