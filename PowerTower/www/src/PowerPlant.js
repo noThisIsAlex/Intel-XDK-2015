@@ -60,7 +60,7 @@ var PowerPlant = Unit.extend({
             }
          
         }), this);
-        this.healthBar.y = 60;
+        this.healthBar.y = 40;
     },
     healthRate: 50,
     power: 1000,
