@@ -7,7 +7,7 @@ var Tower = cc.Layer.extend({
     ctor: function() {
         this._super();
         
-        this.sprite = new cc.Sprite(asset.tower);
+        this.sprite = new cc.Sprite(asset.tower_up);
         this.addChild(this.sprite, 1);
     }
 });
