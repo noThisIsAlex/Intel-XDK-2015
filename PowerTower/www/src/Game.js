@@ -5,6 +5,7 @@ var GameLayer = cc.Layer.extend({
     enemies: null,
     towers: null,
     enemies: [],
+    enemySpawn: null,
     bullets: [],
     ctor:function () {
         //////////////////////////////
@@ -59,9 +60,8 @@ var GameLayer = cc.Layer.extend({
         console.log(this.powerPlant.x);
         console.log(this.powerPlant.y);
         
-        this.addChild(enemy, 6);
+       
         this.addChild(this.powerPlant, 3);
-        enemy.beginMovingAlongPathObject(path);
         this.scheduleUpdate();
         
         /*this.towers = [];
@@ -76,13 +76,16 @@ var GameLayer = cc.Layer.extend({
         this.addChild(tower, 5);
 
         this.towers.push(tower);*/
-        
-        this.schedule(function(){
+         
+        this.enemySpawn = this.schedule(function(){
              var enemy = new Enemy(100);
-            this.enemies.push(enemy);
-            this.addChild(enemy, 6);
-            enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        }, 3.0);
+
+        this.enemies.push(enemy);
+        this.addChild(enemy, 6);
+        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        this.numEnemies++;
+        console.log(this.numEnemies);
+        }, 1.0, 30, 5);
 
         this.towers.push(tower);
     },
