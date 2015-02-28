@@ -1,6 +1,7 @@
 
 var GameLayer = cc.Layer.extend({
     sprite:null,
+    powerPlant:null,
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -25,7 +26,9 @@ var GameLayer = cc.Layer.extend({
             enemy.takeDamage(15);
         }, 4, 5, 0);
         this.enemies.push(enemy);
+        
         this.powerPlant = new PowerPlant();
+        
         this.powerPlant.x = cc.winSize.width / 3;
         this.powerPlant.y = cc.winSize.height / 2;
         enemy.x = cc.winSize.width / 2;
