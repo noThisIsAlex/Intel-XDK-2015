@@ -59,7 +59,7 @@ var GameLayer = cc.Layer.extend({
             this.addChild(tower, 5);
         }
 
-        this.powerPlant.powerRate = this.towers.length * (this.towers[0].energyUsage / 2);
+        this.powerPlant.powerRate = this.towers.length * (this.towers[0].energyUsage * 1.5);
         console.log(this.powerPlant.powerRate + "<- POWER RATE")
         
         this.powerPlant.x = parseInt(path.polylinePoints[path.polylinePoints.length - 1].x) + path.x;
@@ -152,7 +152,7 @@ var GameLayer = cc.Layer.extend({
                 }
                 towersOn++;
             }
-            console.log(tower.energy + "<- AFTER POWER PLANT ROUND");
+            //console.log(tower.energy + "<- AFTER POWER PLANT ROUND");
         }
         console.log(totalEnergyUsed + "TOTAL ENERGY USED THIS ROUND.");
         
