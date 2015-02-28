@@ -7,6 +7,7 @@ var GameLayer = cc.Layer.extend({
     enemies: [],
     enemySpawn: null,
     bullets: [],
+    audio: null,
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -17,23 +18,15 @@ var GameLayer = cc.Layer.extend({
 
         var tilemap = new cc.TMXTiledMap(asset.map_01);
         this.addChild(tilemap, 1);
-
-        console.log(tilemap);
-        // Object group 0 is the enemy path
-        // Object group 1 is the towers
-        // Object group 2 is the switches
         
         // Add all the game objects to the layer
         // Get the properties from the tmx file
-        
-        // WRITE CODE HERE
 
         var enemy = new Enemy(100);
 
         this.enemies.push(enemy);
         
         this.powerPlant = new PowerPlant();
-        
         
         var path, towerPositions;
         for (var i = 0; i < tilemap.objectGroups.length; ++i) {
