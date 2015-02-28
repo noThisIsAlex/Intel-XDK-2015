@@ -14,6 +14,7 @@ var Unit = cc.Layer.extend({
     healthBar: null,
     takeDamage: function(amount) {
         this.health -= amount;
+        this.healthBar.displayHealth(this.health, this.totalHealth); 
         if (this.health <= 0) {
             this.destroy();
         }
