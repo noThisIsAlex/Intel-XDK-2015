@@ -93,12 +93,15 @@ var Tower = cc.Layer.extend
     },
 
     switchState: function(event) {
+        
         if (this.on == true) {
             event.getCurrentTarget().sprite.setTexture(asset.tower_upoff);
+            cc.audioEngine.playEffect(asset.power_off, false);
             this.on = false;            
         }
         else {
             event.getCurrentTarget().sprite.setTexture(asset.tower_up);
+            cc.audioEngine.playEffect(asset.power_on, false);
             this.on = true;
         }
     }
