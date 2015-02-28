@@ -20,8 +20,24 @@ var PowerPlant = Unit.extend({
         this.powerMax = powerMax;*/
         this.sprite = new cc.Sprite(asset.powerplantlv1);
         this.addChild(this.sprite, 1);
+        console.log(this.sprite)
         //this.setTouchEnabled(true);
-        cc.eventManager.addListener(listener.clone(), this.sprite);
+        cc.eventManager.addListener(cc.EventListener.create({
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            // When "swallow touches" is true, then returning 'true' from the onTouchBegan method will "swallow" the touch event, preventing other listeners from using it.
+            swallowTouches: true,
+            //onTouchBegan event callback function                      
+            onTouchBegan: function (touch, event) { 
+                console.log(touch);
+                console.log(event);
+                console.log(touch._point.x);
+                console.log(touch._point.y);
+                console.log("touchDown");
+				var target = event.getCurrentTarget();
+				console.log(target);
+				console.log(target.sprite);
+            }
+        }), this);
         this.healthBar.y = 60;
     },
     healthRate: 50,

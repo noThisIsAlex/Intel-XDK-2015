@@ -23,6 +23,7 @@ var GameLayer = cc.Layer.extend({
         var enemy = new Enemy(100);
         this.schedule(function() {
             enemy.takeDamage(15);
+            console.log(enemy);
         }, 4, 5, 0);
         this.enemies.push(enemy);
         this.powerPlant = new PowerPlant();
