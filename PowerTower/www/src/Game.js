@@ -30,7 +30,7 @@ var GameLayer = cc.Layer.extend({
         
         this.powerPlant = new PowerPlant();
         
-        
+        console.log(this.powerPlant);
         var path, towerPositions;
         for (var i = 0; i < tilemap.objectGroups.length; ++i) {
             if (tilemap.objectGroups[i].groupName === "Enemy_Path") {
@@ -100,7 +100,8 @@ var GameLayer = cc.Layer.extend({
             for (i = 0; i < this.enemies.length; ++i) {
                 var enemy = this.enemies[i];
                 if (distance(tower, enemy) < tower.range) {
-                    if (tower.ac <= 0) {
+                    if (tower.ac <= 0 && tower.energy >= tower.energyUsage) {                        
+                        tower.energy -= tower.energyUsage;
                         enemy.takeDamage(tower.power);
                         if (enemy.health <= 0) {
                             this.removeChild(enemy);

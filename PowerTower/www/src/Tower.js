@@ -9,5 +9,8 @@ var Tower = cc.Layer.extend({
         
         this.sprite = new cc.Sprite(asset.tower_up);
         this.addChild(this.sprite, 1);
-    }
+    },
+    energyMax: 500,
+    energyUsage: 50,
+    energy: 500
 });
