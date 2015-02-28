@@ -32,11 +32,16 @@ var GameLayer = cc.Layer.extend({
         
         this.powerPlant = new PowerPlant();
         
-        this.powerPlant.x = cc.winSize.width / 2;
-        this.powerPlant.y = cc.winSize.height / 2;
+        path = tilemap.objectGroups[0].getObjects()[0];
+        
+        this.powerPlant.x = parseInt(path.polylinePoints[path.polylinePoints.length - 1].x) + path.x;
+        this.powerPlant.y = cc.winSize.height - (parseInt(path.polylinePoints[path.polylinePoints.length - 1].y) + path.y);
+        console.log(this.powerPlant.x);
+        console.log(this.powerPlant.y);
+        
         this.addChild(enemy, 6);
         this.addChild(this.powerPlant, 3);
-        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        enemy.beginMovingAlongPathObject(path);
         this.scheduleUpdate();
         
         this.towers = [];

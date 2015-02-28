@@ -64,7 +64,7 @@ cc.game.onStart = function(){
      * [5] FIXED_WIDTH     Scale the content's width to screen's width and proportionally scale its height
      * See [official documentation](https://github.com/chukong/cocos-docs/blob/master/manual/framework/html5/v2/resolution-policy-design/en.md) for details
      */
-    cc.view.setDesignResolutionSize(800, 450, cc.ResolutionPolicy.SHOW_ALL);
+    cc.view.setDesignResolutionSize(1024, 512, cc.ResolutionPolicy.SHOW_ALL);
     /**
      * Sets whether resize canvas automatically when browser's size changed.
      */
