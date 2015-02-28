@@ -20,7 +20,7 @@ var PowerPlant = Unit.extend({
         this.powerMax = powerMax;*/
         this.sprite = new cc.Sprite(asset.powerplantlv1);
         this.addChild(this.sprite, 1);
-        console.log(this.sprite)
+        console.log(this.sprite);
         //this.setTouchEnabled(true);
         cc.eventManager.addListener(cc.EventListener.create({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -28,15 +28,37 @@ var PowerPlant = Unit.extend({
             swallowTouches: true,
             //onTouchBegan event callback function                      
             onTouchBegan: function (touch, event) { 
-                console.log(touch);
+                /*console.log(touch);
                 console.log(event);
                 console.log(touch._point.x);
                 console.log(touch._point.y);
                 console.log("touchDown");
+				var touchLoc = touch.getLocation();
 				var target = event.getCurrentTarget();
-				console.log(target);
-				console.log(target.sprite);
+				console.log(touchLoc);
+				console.log(target.sprite.getTextureRect());
+				console.log(target.sprite);*/
+				  // event.getCurrentTarget() returns the *listener's* sceneGraphPriority node.   
+            	var target = event.getCurrentTarget();  
+
+            	//Get the position of the current point relative to the button
+            	var locationInNode = target.convertToNodeSpace(touch.getLocation());    
+            	console.log(locationInNode);
+            	var s = target.sprite.getTextureRect();
+                var rect = cc.rect(-s.width / 2, -s.height / 2, s.width, s.height);
+            	console.log(rect);
+            	
+
+            	//Check the click area
+	            if (cc.rectContainsPoint(rect, locationInNode)) {       
+    	            cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+        	        target.opacity = 180;
+            	    console.log("Yes");
+            	} else {
+            		console.log("Nope");
+            	}
             }
+         
         }), this);
         this.healthBar.y = 60;
     },
