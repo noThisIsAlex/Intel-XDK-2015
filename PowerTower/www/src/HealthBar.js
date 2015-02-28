@@ -1,5 +1,5 @@
-var HealthBar_width = 28;
-var HealthBar_height = 8;
+var HealthBar_width = 50;
+var HealthBar_height = 18;
 
 var HealthBar = cc.Layer.extend({
     blackBar: null,

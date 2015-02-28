@@ -17,8 +17,14 @@ var GameLayer = cc.Layer.extend({
         // Get the properties from the tmx file
         
         
-        // WRITE CODE HERE       
+        // WRITE CODE HERE
+        
+        var whiteBG = new cc.LayerColor(cc.color(255, 255, 255, 255), cc.winSize.width, cc.winSize.height);
+        this.addChild(whiteBG, 1);
+        
         var healthBar = new HealthBar(100, 100);
+        healthBar.x = cc.winSize.width / 2;
+        healthBar.y = cc.winSize.height / 2;
         this.addChild(healthBar, 2);
     }
 });
