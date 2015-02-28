@@ -4,14 +4,8 @@ var asset = {
     CloseSelected_png : "asset/CloseSelected.png",
     map_01 : "asset/tiled_sprites/Map_test01.tmx",
     terrian_tileset : "asset/tiled_sprites/terrain_tiles.png",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    enemy : "asset/tiled_sprites/enmy.png",
-    powerplant_base: "asset/tiled_sprites/power_plant.png",
-=======
     enemy : "asset/tiled_sprites/soldier.png",
     powerplant_base: "asset/tiled_sprites/power_plant.png",
->>>>>>> c96217f42771a9fc1949a787327d71da88ec78f6
     powerplantlv1: "asset/tiled_sprites/power_plant_lv1.png",
     powerplantlv2: "asset/tiled_sprites/power_plant_lv2.png",
     powerplantlv3: "asset/tiled_sprites/power_plant_lv3.png",
