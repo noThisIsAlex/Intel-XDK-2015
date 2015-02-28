@@ -1,5 +1,9 @@
 var Tower = cc.Layer.extend({
     sprite: null,
+    attackCooldown: 100,
+    ac: 0,
+    power: 35,
+    range: 100,
     ctor: function() {
         this._super();
         
