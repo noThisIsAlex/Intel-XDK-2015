@@ -19,6 +19,7 @@
         "src/PowerPlant.js",
         "src/HealthBar.js",
         "src/utils.js",
-        "src/Bullet.js"
+        "src/Bullet.js",
+        "src/Title.js"
     ]
 }
