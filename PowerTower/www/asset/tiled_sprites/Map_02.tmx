@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Big_TileSet" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Downloads/Game Jam/custom_tiles/Big_TileSet.png" width="320" height="512"/>
+ </tileset>
+ <tileset firstgid="161" name="Big_TileSet" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Downloads/Game Jam/custom_tiles/Big_TileSet.png" width="320" height="512"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmslOwzAQhl02iR0JJLjCFZobpC/EjsSOxHphvbBeyvaw/JEYMUztpouTdCIfPo3kdBLbX51M3FaMMX2g4jlWQcSi7/PLOArGMogxqLGY1XUoZjU/wUfwkcX8VBmRYh+xGIdmH/x7pdVH2dZHJHz0g4Ee8kH9aebDtj7S8vL2kTavSf9prXMf42CiBD5oHJp82J4fwUdv+aA83/etTsefNq+x+b/OZZ5vL52OfxbMgUEwBIbBCNgGO+avzqVxUDvlUSzaxzxYAJNgCkyDGXAMTkzj85zaKY9i0T5kXARLbN7lOKi91+or6hfFZbAifPB1Tu0VS26RPqhfFPnxVbAG1sEG2ARb7LjM9eFD+vcRd8Ee2AcH4BAcdXCeVkk+L9+jXe3txFNwBs7BBbgEV+L8Ett5JDI3No399hmvwQ24BXfgHjw45rH2i21sLmw53cy7Kz6CJ/AMXsAreLPML89rB1uOr/sVP14H7+ADfIIv8M2Oa7lfNXv/yOp+1W2966p7XfVuEmVtUqQPWe+1Wu8mUdYmWn3IXK0+ZG6RPtKiXOc2Hz6vl1X92Ww/0aeHPHyUZT8x7O8GH8FH8BF85OuDv4dq9uGqr7T54O+vWn3I3501++D7GJp98H0l7T60Pz/y/r/PD9HQoUc=
+  </data>
+ </layer>
+</map>
