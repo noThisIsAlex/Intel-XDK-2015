@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" name="Big_TileSet" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="7" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="Big_TileSet" tilewidth="64" tileheight="64">
   <image source="Big_TileSet.png" width="320" height="512"/>
  </tileset>
- <layer name="Tile Layer 1" width="25" height="25">
+ <layer name="Tile Layer 1" width="12" height="7">
   <data encoding="base64" compression="zlib">
-   eJzt1ckOgjAQgGHgiq8iV3ghdxN3E9eL68X14vqw/hyaNA2t1WCihsOXUejQTqcE13EcD64m1lBHHoEUxXVdnhx95Ayxhz5CRFIU15/l+5br8BLqsM2zqUNEtQ7bPJs6sn58Vz/SrEP08N06TPliPtHDpHUUUEQJZVRQVcaZ8uU9EL/l/7EGmmihjQ66yhidQNkD+V4oGWCIEcaYYKqsSRVKz9Y9V9yPzTDHAkussDasO9LMZ7LBFjvsccBRMzZKYHMuTjjjgituuDvpniub98OU/2/vefb9+K1+qHN84lype/VKHQ9MnEsE
+   eJxjZGBgYANiZiiWBWJeKGbEgYWBmAuJT0i9LBSD2FJALA3FMkjismhmwbA8ECtAsSIWeVLVo7tHBYhVoVgNTQ4XxudfALxqBG0=
   </data>
  </layer>
 </map>
