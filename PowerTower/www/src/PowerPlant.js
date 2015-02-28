@@ -33,7 +33,7 @@ var PowerPlant = Unit.extend({
     	}
     },
 
-    upgrade: function() {
+    upgrade: function(event) {
     	// Increase maximums and rate of recharge
     	var upgradeLevel = {
     		powerMaxInc: 100,
@@ -49,14 +49,15 @@ var PowerPlant = Unit.extend({
     	this.health = this.healthMax;
     	this.power = this.powerMax;
     	this.level++
+    	console.log(event.getCurrentTarget());
     	if (this.level == 1) {
-    		this.sprite = new cc.Sprite(asset.powerplantlv1);
+    		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv1);
     		console.log("level1");
     	} else if (this.level == 2) {
-    		this.sprite = new cc.Sprite(asset.powerplantlv2);	
+    		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv2);
     		console.log("level2");
     	} else if (this.level == 3) {
-    		this.sprite = new cc.Sprite(asset.powerplantlv3);
+    		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv3);
     		console.log("level3");
     	} else if (this.level > 3) {
     		this.level = 1;
@@ -90,13 +91,11 @@ var PowerPlant = Unit.extend({
             cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
 	        target.opacity = 180;
     	    console.log("Yes");
-    	    event.getCurrentTarget().upgrade();
+    	    event.getCurrentTarget().upgrade(event);
     	} else {
     		console.log("Nope");
     	}
     }
 });
 
-
-console.log(listener);
 console.log(PowerPlant);
