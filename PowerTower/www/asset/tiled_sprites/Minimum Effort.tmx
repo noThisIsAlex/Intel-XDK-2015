@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Tileset_Demo" tilewidth="32" tileheight="32">
+  <image source="Tileset_Demo.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="Tower" tilewidth="32" tileheight="32">
+  <image source="Tower.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="41" name="Power Plant" tilewidth="32" tileheight="32">
+  <image source="Power Plant.png" width="192" height="192"/>
+ </tileset>
+ <tileset firstgid="77" name="Tileset_Breakers" tilewidth="32" tileheight="32">
+  <image source="Tileset_Breakers.png" width="448" height="128"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzNmUmPEzEQhd1h6bBILBI7Exgy7Pu+7/tyAQmuMxL8AZDgChL8cN6IlFK8VNntnom7D5+s7sRul1/XKzupQghVJvWkHSjkup6wAEYTFtT1cXACbAKbwXfwQ41TZ8BzaoP0X332cHJvqOA4xmAJnASnwDawHfwGf1S/QbDXh9dNx1wZ32vasiayvrLeMm/WQ+YrfTeAjWo99DyH9NyK1kp/LuuY21b0PFlfWW+JQ7SQOLSmq/22gK1qHA2vv44npVtuO3Tuaz10HPw91oPjjMWm769VD28ciUO/WyPje6KHNQ7DMa1HfnCec37IvDkO9qsdYKexPjmtjjOn1d4r43F+6DiWgu9Xe8DelvOw3o9cHbSmll9pj4rVj/XQo61fVcZzLb+SuY8b6MF1qKQeln/LtVfPPb/ielBKj9R4Og6uH5ZfdZEftXE/pkesfhwCh8PsfquEHlzPU3ke02MRHAuz+61S+cH1w/NdjoP9Stqv4FuY+lcJPXiPmNon6jrIfiXtT/ArtK8na8kPHUtMj1j9kPYAOBimeV8qP7Qm1ue6nuv3ytPjCDgapj5cQg+JP+a/XAc9v+L17EKPOjJO0/rBbUk9rHoe2+/m6CFxlPIr9iwvz8fh//1Vavy29b2tX+m+1jjWHrHP9SOWHzoWOYf0qX7oduDc9/btnh7vwYfCevA71cSvvPOHtMtgpUM9JI7UPlHyw9qndeVXQ6N/6jwo+aH718a4Jf3KWgfLr6z8SK1fV3rk+NWoQX85V+0Cuwvq4bWe76bWbzH8O1ftA/t7oIfkB8eS8l3v96BSelh+ZeV6ynf596DSesR+b9e/j8peIDWP3H3vPP1K+5TOD8tveZxc35pnfsh7Fdvvev1z68i89JB5syZenovPdqWH9zn/r5bKc/HZrvTw/EprEKvn3vp3pYd1HuQcj53Pef270sOr55Zf6fgHPdPD8yud75ZfCX3Rwzt/sC6eX30En3qgh1XPmZhffQZfWugxr7yQ9jQ4A86Cc+A8uKA+F3gfkqtHWx2a5sdFcAlcBlfAVXCN5lEFf/374lfXwQ1wE9wCt8EdNX+Joev6kWrvgnvgPngAHoJHYbpH1PRBD/EbQa4fgyfgKXgGnoMXYdan+NzE/4eU0kP8RpDrl+AVeA3egLfgXZj1KT438f8hTefxFwgybC0=
+  </data>
+ </layer>
+</map>
