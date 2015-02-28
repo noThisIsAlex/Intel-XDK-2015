@@ -23,8 +23,6 @@ var GameLayer = cc.Layer.extend({
         // Add all the game objects to the layer
         // Get the properties from the tmx file
         
-        
-        // WRITE CODE HERE
         this.enemies = [];
         var enemy = new Enemy(100);
 
@@ -32,7 +30,26 @@ var GameLayer = cc.Layer.extend({
         
         this.powerPlant = new PowerPlant();
         
-        path = tilemap.objectGroups[0].getObjects()[0];
+        
+        var path, towerPositions;
+        for (var i = 0; i < tilemap.objectGroups.length; ++i) {
+            if (tilemap.objectGroups[i].groupName === "Enemy_Path") {
+                path = tilemap.objectGroups[i].getObjects()[0];
+            }
+            if (tilemap.objectGroups[i].groupName === "Tower_Placement") {
+                towerPositions = tilemap.objectGroups[i];
+            }
+        }
+        
+        // add the towers
+        this.towers = [];
+        for (var i = 0; i < towerPositions.getObjects().length; ++i) {
+            var tower = new Tower();
+            tower.x = towerPositions.getObjects()[i].x;
+            tower.y = towerPositions.getObjects()[i].y;
+            this.towers.push(tower);
+            this.addChild(tower, 5);
+        }
         
         this.powerPlant.x = parseInt(path.polylinePoints[path.polylinePoints.length - 1].x) + path.x;
         this.powerPlant.y = cc.winSize.height - (parseInt(path.polylinePoints[path.polylinePoints.length - 1].y) + path.y);
@@ -44,7 +61,7 @@ var GameLayer = cc.Layer.extend({
         enemy.beginMovingAlongPathObject(path);
         this.scheduleUpdate();
         
-        this.towers = [];
+        /*this.towers = [];
         var tower = new Tower();
         tower.x = 100;
         tower.y = 275;
@@ -54,7 +71,7 @@ var GameLayer = cc.Layer.extend({
         tower.x = 140;
         tower.y = 250;
         this.addChild(tower, 5);
-        this.towers.push(tower);
+        this.towers.push(tower);*/
     },
     update: function() {
         var i, j;
