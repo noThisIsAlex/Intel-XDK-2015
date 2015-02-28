@@ -12,6 +12,9 @@
 
     "jsList" : [
         "src/resource.js",
-        "src/app.js"
+        "src/Game.js",
+        "src/Unit.js",
+        "src/Enemy.js",
+        "src/Tower.js"
     ]
 }
