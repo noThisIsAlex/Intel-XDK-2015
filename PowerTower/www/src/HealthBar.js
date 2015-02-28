@@ -25,5 +25,9 @@ var HealthBar = cc.Layer.extend({
     },
     displayHealth: function(currentHealth, totalHealth) {
         this.greenBar.scaleX = currentHealth / totalHealth;
-    }
+    },
+    setColor: function(r, g, b, a)
+    {
+        this.greenBar = new cc.LayerColor(cc.color(r, g, b, a), HealthBar_width - 2, HealthBar_height - 2);
+    },
 });

@@ -47,6 +47,14 @@ var GameLayer = cc.Layer.extend({
             var tower = new Tower();
             tower.x = towerPositions.getObjects()[i].x;
             tower.y = towerPositions.getObjects()[i].y;
+            if(tower.y > cc.winSize.height / 2)
+            {
+                tower.mana.y = tower.mana.y + 25;
+            }
+            else
+            {                
+                tower.mana.y = tower.mana.y - 25;   
+            }
             this.towers.push(tower);
             this.addChild(tower, 5);
         }
@@ -80,7 +88,6 @@ var GameLayer = cc.Layer.extend({
         this.addChild(enemy, 6);
         enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
         this.numEnemies++;
-        console.log(this.numEnemies);
         }, 1.0, 30, 5);
 
         this.towers.push(tower);
