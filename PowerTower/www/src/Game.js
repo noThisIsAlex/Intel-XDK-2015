@@ -24,22 +24,46 @@ var GameLayer = cc.Layer.extend({
         // Add all the game objects to the layer
         // Get the properties from the tmx file
         
-        
         // WRITE CODE HERE
+
         var enemy = new Enemy(100);
 
         this.enemies.push(enemy);
         
         this.powerPlant = new PowerPlant();
         
-        this.powerPlant.x = cc.winSize.width / 2;
-        this.powerPlant.y = cc.winSize.height / 2;
+        
+        var path, towerPositions;
+        for (var i = 0; i < tilemap.objectGroups.length; ++i) {
+            if (tilemap.objectGroups[i].groupName === "Enemy_Path") {
+                path = tilemap.objectGroups[i].getObjects()[0];
+            }
+            if (tilemap.objectGroups[i].groupName === "Tower_Placement") {
+                towerPositions = tilemap.objectGroups[i];
+            }
+        }
+        
+        // add the towers
+        this.towers = [];
+        for (var i = 0; i < towerPositions.getObjects().length; ++i) {
+            var tower = new Tower();
+            tower.x = towerPositions.getObjects()[i].x;
+            tower.y = towerPositions.getObjects()[i].y;
+            this.towers.push(tower);
+            this.addChild(tower, 5);
+        }
+        
+        this.powerPlant.x = parseInt(path.polylinePoints[path.polylinePoints.length - 1].x) + path.x;
+        this.powerPlant.y = cc.winSize.height - (parseInt(path.polylinePoints[path.polylinePoints.length - 1].y) + path.y);
+        console.log(this.powerPlant.x);
+        console.log(this.powerPlant.y);
+        
         this.addChild(enemy, 6);
         this.addChild(this.powerPlant, 3);
-        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        enemy.beginMovingAlongPathObject(path);
         this.scheduleUpdate();
         
-        this.towers = [];
+        /*this.towers = [];
         var tower = new Tower();
         tower.x = 100;
         tower.y = 275;
@@ -49,14 +73,17 @@ var GameLayer = cc.Layer.extend({
         tower.x = 140;
         tower.y = 250;
         this.addChild(tower, 5);
-        this.towers.push(tower);
+
+        this.towers.push(tower);*/
         
         this.schedule(function(){
              var enemy = new Enemy(100);
         this.enemies.push(enemy);
         this.addChild(enemy, 6);
         enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        }, 2.0);
+        }, 1.0);
+
+        this.towers.push(tower);
     },
     update: function() {
         var i, j, enemy;
