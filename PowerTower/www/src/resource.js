@@ -4,7 +4,7 @@ var asset = {
     CloseSelected_png : "asset/CloseSelected.png",
     map_01 : "asset/tiled_sprites/Map_test01.tmx",
     terrian_tileset : "asset/tiled_sprites/terrain_tiles.png",
-    enemy : "asset/tiled_sprites/enmy.png",
+    enemy : "asset/tiled_sprites/soldier.png",
     powerplantlv2: "asset/tiled_sprites/Power Plant.png",
     powerplantlv1: "asset/tiled_sprites/Power Plant lvl 1.png",
     powerplantlv3: "asset/tiled_sprites/Power Plant lvl 3.png",
