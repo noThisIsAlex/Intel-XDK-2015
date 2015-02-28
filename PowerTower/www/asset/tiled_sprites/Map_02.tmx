@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="8" tilewidth="64" tileheight="64" nextobjectid="13">
+ <tileset firstgid="1" name="terrain_tiles" tilewidth="64" tileheight="64">
+  <image source="terrain_tiles.png" width="256" height="192"/>
+ </tileset>
+ <tileset firstgid="13" name="terrain_corners" tilewidth="64" tileheight="64">
+  <image source="terrain_corners.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="tank_destroyed" tilewidth="64" tileheight="64">
+  <image source="tank_destroyed.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="18" name="tank_decoration" tilewidth="64" tileheight="64">
+  <image source="tank_decoration.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="19" name="fireball_decoration" tilewidth="64" tileheight="64">
+  <image source="fireball_decoration.png" width="64" height="64"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="16" height="8">
+  <data encoding="base64" compression="zlib">
+   eJydkdEKwCAIRZ3bWDSC6P8/dj4oyMHtYQ8HKzreMBURNTavGZ7txpk4ijvcL2MYl9EKP5wFP+ooPPqaMgjdbtzO9JyvDLrh5Nw/7vJ1k/ptZL7MmP05R0Um/+oBmqIC3g==
+  </data>
+ </layer>
+ <objectgroup name="Enemy Path">
+  <object id="1" x="-128" y="576">
+   <polyline points="0,0 128,-64 256,-192 384,-256 704,-256 832,-384 896,-448"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Turret_Placement">
+  <object id="3" x="448" y="448">
+   <ellipse/>
+  </object>
+  <object id="4" x="576" y="448">
+   <ellipse/>
+  </object>
+  <object id="5" x="704" y="384">
+   <ellipse/>
+  </object>
+  <object id="6" x="640" y="64">
+   <ellipse/>
+  </object>
+  <object id="7" x="64" y="320">
+   <ellipse/>
+  </object>
+  <object id="8" x="128" y="256">
+   <ellipse/>
+  </object>
+  <object id="9" x="512" y="192">
+   <ellipse/>
+  </object>
+  <object id="12" x="256" y="192">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Power_Plant"/>
+ <objectgroup name="Switches"/>
+</map>

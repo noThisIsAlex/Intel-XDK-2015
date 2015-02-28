@@ -11,7 +11,7 @@
  </tileset>
  <layer name="Tile Layer 1" width="16" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYELCjGh8XGLkqMGG2SjErAOM2SnExIQjvrAlJ9yR9QAA51MB6Q==
+   eJxjZGBgYELCjGh8XGLkqMGG2SnErAOMuSnExIQjvrAlJ9yR9QAAJgICOQ==
   </data>
  </layer>
  <objectgroup name="Enemy_Path">
