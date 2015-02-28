@@ -20,9 +20,13 @@ var GameLayer = cc.Layer.extend({
         // WRITE CODE HERE
         
         var enemy = new Enemy();
+        var powerPlant = new PowerPlant();
+        powerPlant.x = cc.winSize.width / 3;
+        powerPlant.y = cc.winSize.height / 2;
         enemy.x = cc.winSize.width / 2;
         enemy.y = cc.winSize.height / 2;
         this.addChild(enemy, 2);
+        this.addChild(powerPlant, 3);
     }
 });
 

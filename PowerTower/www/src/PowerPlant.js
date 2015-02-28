@@ -1,9 +1,9 @@
 var PowerPlant = Unit.extend({
     ctor: function() { 		
         this._super(this.health);	       
-        this.power = power;
+        /*this.power = power;
         this.powerRate = powerRate;
-        this.powerMax = powerMax;
+        this.powerMax = powerMax;*/
         this.sprite = new cc.Sprite(asset.powerplant);
         this.addChild(this.sprite, 1);
     },
