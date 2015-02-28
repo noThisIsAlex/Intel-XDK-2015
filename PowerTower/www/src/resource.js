@@ -6,7 +6,7 @@ var asset = {
     terrian_tileset : "asset/tiled_sprites/terrain_tiles.png",
 <<<<<<< HEAD
     enemy : "asset/tiled_sprites/enmy.png",
-    powerplant: "asset/tiled_sprites/power_plant.png",
+    powerplant_base: "asset/tiled_sprites/power_plant.png",
     powerplantlv1: "asset/tiled_sprites/power_plant_lv1.png",
     powerplantlv2: "asset/tiled_sprites/power_plant_lv2.png",
     powerplantlv3: "asset/tiled_sprites/power_plant_lv3.png",
