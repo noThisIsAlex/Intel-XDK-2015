@@ -59,19 +59,6 @@ var GameLayer = cc.Layer.extend({
        
         this.addChild(this.powerPlant, 3);
         this.scheduleUpdate();
-        
-        /*this.towers = [];
-        var tower = new Tower();
-        tower.x = 100;
-        tower.y = 275;
-        this.addChild(tower, 5);
-        this.towers.push(tower);
-        tower = new Tower();
-        tower.x = 140;
-        tower.y = 250;
-        this.addChild(tower, 5);
-
-        this.towers.push(tower);*/
          
         this.enemySpawn = this.schedule(function(){
              var enemy = new Enemy(100);
@@ -82,8 +69,8 @@ var GameLayer = cc.Layer.extend({
         this.numEnemies++;
         console.log(this.numEnemies);
         }, 1.0, 30, 5);
-
-        this.towers.push(tower);
+        
+        cc.audioEngine.playMusic(asset.all_loop, true);
     },
     update: function() {
         var i, j, enemy;
