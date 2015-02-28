@@ -1,7 +1,7 @@
 
 var PowerPlant = Unit.extend({
     ctor: function() {	
-        this._super(10000, 10000);	       
+        this._super(1500, 1500);	       
         /*this.power = power;
         this.powerRate = powerRate;
         this.powerMax = powerMax;*/
@@ -18,6 +18,7 @@ var PowerPlant = Unit.extend({
         }); 
         cc.eventManager.addListener(listener, this);
         this.healthBar.y = 60;
+        console.log(this.health);
     },
     healthRate: 50,
     power: 1000,
@@ -43,10 +44,12 @@ var PowerPlant = Unit.extend({
     	};
     	this.powerMax += upgradeLevel.powerMaxInc;
     	this.powerRate += upgradeLevel.powerRateInc;
-    	this.healthMax += upgradeLevel.healthMaxInc;
+    	this.totalHealth += upgradeLevel.healthMaxInc;
     	this.healthRate += upgradeLevel.healthRateInc;
     	
-    	this.health = this.healthMax;
+    	console.log(this);
+    	console.log(this.health);
+    	this.health = this.totalHealth;
     	this.power = this.powerMax;
     	this.level++
     	console.log(event.getCurrentTarget());

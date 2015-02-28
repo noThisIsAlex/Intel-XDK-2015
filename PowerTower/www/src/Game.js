@@ -5,7 +5,9 @@ var GameLayer = cc.Layer.extend({
     enemies: null,
     towers: null,
     enemies: [],
+    enemySpawn: null,
     bullets: [],
+    audio: null,
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -16,16 +18,9 @@ var GameLayer = cc.Layer.extend({
 
         var tilemap = new cc.TMXTiledMap(asset.map_01);
         this.addChild(tilemap, 1);
-
-        console.log(tilemap);
-        // Object group 0 is the enemy path
-        // Object group 1 is the towers
-        // Object group 2 is the switches
         
         // Add all the game objects to the layer
         // Get the properties from the tmx file
-        
-        // WRITE CODE HERE
 
         var enemy = new Enemy(100);
 
@@ -33,7 +28,9 @@ var GameLayer = cc.Layer.extend({
         
         this.powerPlant = new PowerPlant();
         
-        
+        console.log(this.powerPlant + "<<-----------");
+        console.log(this.powerPlant.power);
+
         var path, towerPositions;
         for (var i = 0; i < tilemap.objectGroups.length; ++i) {
             if (tilemap.objectGroups[i].groupName === "Enemy_Path") {
@@ -59,9 +56,8 @@ var GameLayer = cc.Layer.extend({
         console.log(this.powerPlant.x);
         console.log(this.powerPlant.y);
         
-        this.addChild(enemy, 6);
+       
         this.addChild(this.powerPlant, 3);
-        enemy.beginMovingAlongPathObject(path);
         this.scheduleUpdate();
         
         /*this.towers = [];
@@ -76,13 +72,16 @@ var GameLayer = cc.Layer.extend({
         this.addChild(tower, 5);
 
         this.towers.push(tower);*/
-        
-        this.schedule(function(){
+         
+        this.enemySpawn = this.schedule(function(){
              var enemy = new Enemy(100);
-            this.enemies.push(enemy);
-            this.addChild(enemy, 6);
-            enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        }, 3.0);
+
+        this.enemies.push(enemy);
+        this.addChild(enemy, 6);
+        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        this.numEnemies++;
+        console.log(this.numEnemies);
+        }, 1.0, 30, 5);
 
         this.towers.push(tower);
     },
@@ -119,20 +118,22 @@ var GameLayer = cc.Layer.extend({
                 }
                 
                 if (distance(tower, enemy) < tower.range) {
-                    if (tower.ac <= 0) {
+                    if (tower.ac <= 0 && tower.on) {
                         // Launch a bullet
                         var bullet = new Bullet(enemy, tower.power);
                         bullet.x = tower.x;
                         bullet.y = tower.y;
                         this.addChild(bullet, 7);
                         bullet.scheduleUpdate();
-                        this.bullets.push(bullet);
-                        
+                        this.bullets.push(bullet);                
                         tower.ac = tower.attackCooldown;
                     }
                 }
             }
         }
+        /*for (k = 0; j < this.towers.length; k++) {
+            
+        }*/
         
         for (i = 0; i < this.bullets.length; ++i) {
             var bullet = this.bullets[i];
