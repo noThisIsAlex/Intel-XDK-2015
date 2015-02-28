@@ -18,15 +18,16 @@ var GameLayer = cc.Layer.extend({
         
         
         // WRITE CODE HERE
-        
+        this.enemies = [];
         var enemy = new Enemy();
-        var powerPlant = new PowerPlant();
-        powerPlant.x = cc.winSize.width / 3;
-        powerPlant.y = cc.winSize.height / 2;
+        this.enemies.push(enemy);
+        this.powerPlant = new PowerPlant();
+        this.powerPlant.x = cc.winSize.width / 3;
+        this.powerPlant.y = cc.winSize.height / 2;
         enemy.x = cc.winSize.width / 2;
         enemy.y = cc.winSize.height / 2;
         this.addChild(enemy, 2);
-        this.addChild(powerPlant, 3);
+        this.addChild(this.powerPlant, 3);
     }
 });
 
