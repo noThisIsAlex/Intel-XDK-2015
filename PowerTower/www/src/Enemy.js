@@ -1,13 +1,17 @@
 var Enemy = Unit.extend({
     sprite: null,
     speed: 50,
+    attacking: false,
+    power: 10, // attack damage per hit
+    attackCooldown: 100,
+    ac: 0,
     ctor: function(health) {
         this._super(health, health);
         this.sprite = new cc.Sprite(asset.enemy);
         this.addChild(this.sprite, 1);
         this.healthBar.y = 34;
     },
-    beginMoveAlongPathObject: function(object) {
+    beginMovingAlongPathObject: function(object) {
         // Set the enemy position to the origin
         this.x = object.x;
         this.y = object.y;

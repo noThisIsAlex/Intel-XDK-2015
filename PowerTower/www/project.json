@@ -17,6 +17,7 @@
         "src/Enemy.js",
         "src/Tower.js",
         "src/PowerPlant.js",
-        "src/HealthBar.js"
+        "src/HealthBar.js",
+        "src/utils.js"
     ]
 }

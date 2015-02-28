@@ -29,13 +29,31 @@ var GameLayer = cc.Layer.extend({
         
         this.powerPlant = new PowerPlant();
         
-        this.powerPlant.x = cc.winSize.width / 3;
+        this.powerPlant.x = cc.winSize.width / 2;
         this.powerPlant.y = cc.winSize.height / 2;
-        enemy.x = cc.winSize.width / 2;
-        enemy.y = cc.winSize.height / 2;
         this.addChild(enemy, 4);
         this.addChild(this.powerPlant, 3);
-        enemy.beginMoveAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        this.scheduleUpdate();
+    },
+    update: function() {
+        for (var i = 0; i < this.enemies.length; ++i) {
+            var enemy = this.enemies[i];
+            var dist = distance(this.powerPlant, enemy);
+            if (!enemy.attacking && dist < 40) {
+                enemy.actionManager.pauseTarget(enemy);
+                enemy.attacking = true;
+            }
+            
+            if (enemy.attacking) {
+                if (enemy.ac <= 0) {
+                    console.log("Attack!");
+                    this.powerPlant.takeDamage(enemy.power);
+                    enemy.ac = enemy.attackCooldown;
+                }
+                --enemy.ac;
+            }
+        }
     }
 });
 
@@ -46,10 +64,4 @@ var Game = cc.Scene.extend({
         this.addChild(layer);
     }
 });
-console.log(Game);
-
-var flipY = function(y) {
-    return cc.winSize.height - y;
-}
-
 
