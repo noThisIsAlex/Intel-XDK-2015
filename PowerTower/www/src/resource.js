@@ -12,7 +12,8 @@ var asset = {
     tower_up : "asset/tiled_sprites/Basic_Tower_On_p1.png",
     tower_down : "asset/tiled_sprites/Basic_Tower_On_p2.png",
     tower_left : "asset/tiled_sprites/Basic_Tower_On_p3.png",
-    tower_right : "asset/tiled_sprites/Basic_Tower_On_p4.png"
+    tower_right : "asset/tiled_sprites/Basic_Tower_On_p4.png",
+    fireball : "asset/tiled_sprites/fireball.png"
 };
 
 var g_resources = [];

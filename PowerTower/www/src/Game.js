@@ -5,6 +5,7 @@ var GameLayer = cc.Layer.extend({
     enemies: null,
     towers: null,
     enemies: [],
+    bullets: [],
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -78,10 +79,10 @@ var GameLayer = cc.Layer.extend({
         
         this.schedule(function(){
              var enemy = new Enemy(100);
-        this.enemies.push(enemy);
-        this.addChild(enemy, 6);
-        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        }, 1.0);
+            this.enemies.push(enemy);
+            this.addChild(enemy, 6);
+            enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+        }, 3.0);
 
         this.towers.push(tower);
     },
@@ -111,17 +112,36 @@ var GameLayer = cc.Layer.extend({
             --tower.ac;
             for (i = 0; i < this.enemies.length; ++i) {
                 enemy = this.enemies[i];
+                if (enemy.health <= 0) {
+                    this.removeChild(enemy);
+                    this.enemies.splice(i, 1);
+                    --i;
+                }
+                
                 if (distance(tower, enemy) < tower.range) {
                     if (tower.ac <= 0) {
-                        enemy.takeDamage(tower.power);
-                        if (enemy.health <= 0) {
-                            this.removeChild(enemy);
-                            this.enemies.splice(i, 1);
-                            --i;
-                        }
+                        // Launch a bullet
+                        var bullet = new Bullet(enemy, tower.power);
+                        bullet.x = tower.x;
+                        bullet.y = tower.y;
+                        this.addChild(bullet, 7);
+                        bullet.scheduleUpdate();
+                        this.bullets.push(bullet);
+                        
                         tower.ac = tower.attackCooldown;
                     }
                 }
+            }
+        }
+        
+        for (i = 0; i < this.bullets.length; ++i) {
+            var bullet = this.bullets[i];
+            var dist = distance(bullet, bullet.target);
+            if (dist < 10) {
+                bullet.target.takeDamage(bullet.damage);
+                this.bullets.splice(i, 1);
+                this.removeChild(bullet);
+                --i;
             }
         }
     }
