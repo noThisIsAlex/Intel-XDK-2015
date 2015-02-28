@@ -28,6 +28,9 @@ var GameLayer = cc.Layer.extend({
         
         this.powerPlant = new PowerPlant();
         
+        console.log(this.powerPlant + "<<-----------");
+        console.log(this.powerPlant.power);
+
         var path, towerPositions;
         for (var i = 0; i < tilemap.objectGroups.length; ++i) {
             if (tilemap.objectGroups[i].groupName === "Enemy_Path") {
@@ -115,20 +118,22 @@ var GameLayer = cc.Layer.extend({
                 }
                 
                 if (distance(tower, enemy) < tower.range) {
-                    if (tower.ac <= 0) {
+                    if (tower.ac <= 0 && tower.on) {
                         // Launch a bullet
                         var bullet = new Bullet(enemy, tower.power);
                         bullet.x = tower.x;
                         bullet.y = tower.y;
                         this.addChild(bullet, 7);
                         bullet.scheduleUpdate();
-                        this.bullets.push(bullet);
-                        
+                        this.bullets.push(bullet);                
                         tower.ac = tower.attackCooldown;
                     }
                 }
             }
         }
+        /*for (k = 0; j < this.towers.length; k++) {
+            
+        }*/
         
         for (i = 0; i < this.bullets.length; ++i) {
             var bullet = this.bullets[i];
