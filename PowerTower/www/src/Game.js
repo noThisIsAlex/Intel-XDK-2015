@@ -12,6 +12,7 @@ var GameLayer = cc.Layer.extend({
         var tilemap = new cc.TMXTiledMap(asset.map_01);
         this.addChild(tilemap, 1);
 
+        console.log(tilemap);
         
         // Add all the game objects to the layer
         // Get the properties from the tmx file
@@ -27,6 +28,8 @@ var GameLayer = cc.Layer.extend({
         enemy.y = cc.winSize.height / 2;
         this.addChild(enemy, 2);
         this.addChild(powerPlant, 3);
+        
+        enemy.beginMoveAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
     }
 });
 
@@ -37,4 +40,8 @@ var Game = cc.Scene.extend({
         this.addChild(layer);
     }
 });
+
+var flipY = function(y) {
+    return cc.winSize.height - y;
+}
 
