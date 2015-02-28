@@ -3,7 +3,7 @@ var Tower = cc.Layer.extend({
     attackCooldown: 100,
     ac: 0,
     power: 35,
-    range: 100,
+    range: 150,
     ctor: function() {
         this._super();
         
