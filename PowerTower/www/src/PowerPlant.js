@@ -60,6 +60,8 @@ var PowerPlant = Unit.extend({
     		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv3);
     		console.log("level3");
     	} else if (this.level > 3) {
+    		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv1);
+    		console.log("level1");
     		this.level = 1;
     	}
     },
