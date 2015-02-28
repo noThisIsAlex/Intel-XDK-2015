@@ -5,6 +5,7 @@ var GameLayer = cc.Layer.extend({
     enemies: null,
     towers: null,
     enemies: [],
+    enemySpawn: null,
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -75,13 +76,15 @@ var GameLayer = cc.Layer.extend({
         this.addChild(tower, 5);
 
         this.towers.push(tower);*/
-        
-        this.schedule(function(){
+         
+        this.enemySpawn = this.schedule(function(){
              var enemy = new Enemy(100);
         this.enemies.push(enemy);
         this.addChild(enemy, 6);
         enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        }, 1.0);
+        this.numEnemies++;
+        console.log(this.numEnemies);
+        }, 1.0), 10;
 
         this.towers.push(tower);
     },
