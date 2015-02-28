@@ -20,7 +20,7 @@ var GameLayer = cc.Layer.extend({
         
         // WRITE CODE HERE
         this.enemies = [];
-        var enemy = new Enemy();
+        var enemy = new Enemy(100);
         this.enemies.push(enemy);
         this.powerPlant = new PowerPlant();
         this.powerPlant.x = cc.winSize.width / 3;

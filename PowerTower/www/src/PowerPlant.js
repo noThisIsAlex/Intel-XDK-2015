@@ -1,14 +1,13 @@
 var PowerPlant = Unit.extend({
-    ctor: function() { 		
-        this._super(this.health);	       
+    ctor: function() {	
+        this._super(10000, 10000);	       
         /*this.power = power;
         this.powerRate = powerRate;
         this.powerMax = powerMax;*/
         this.sprite = new cc.Sprite(asset.powerplantlv1);
         this.addChild(this.sprite, 1);
+        this.healthBar.y = 60;
     },
-    health: 10000,
-    healthMax: 10000,
     healthRate: 50,
     power: 1000,
     powerRate: 1,

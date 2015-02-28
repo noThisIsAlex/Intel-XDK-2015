@@ -1,13 +1,16 @@
 var Unit = cc.Layer.extend({
     // A unit is anything with health
     // Extends from layer so that units can have moving parts
-    ctor: function(health) {
+    ctor: function(health, totalHealth) {
         this._super();
         this.health = health;
-        this.healthBar = new HealthBar(this.health, this.health);
+        this.totalHealth = totalHealth;
+        this.healthBar = new HealthBar();
+        this.healthBar.displayHealth(health, totalHealth);
         this.addChild(this.healthBar, 100);
     },
     health: 100,
+    totalHealth: 100,
     healthBar: null,
     takeDamage: function(amount) {
         this.health -= amount;

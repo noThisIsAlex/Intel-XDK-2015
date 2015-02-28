@@ -2,9 +2,10 @@ var Enemy = Unit.extend({
     sprite: null,
     speed: 50,
     ctor: function(health) {
-        this._super(health);
+        this._super(health, health);
         this.sprite = new cc.Sprite(asset.enemy);
         this.addChild(this.sprite, 1);
+        this.healthBar.y = 34;
     },
     beginMoveAlongPathObject: function(object) {
         // Set the enemy position to the origin
@@ -24,5 +25,9 @@ var Enemy = Unit.extend({
         }
         var sequence = cc.sequence(actions);
         this.runAction(sequence);
+    },
+    update: function() {
+        //this.health--;
+        //this.healthBar.displayHealth(this.health, this.totalHealth);
     }
 });
