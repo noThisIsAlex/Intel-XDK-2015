@@ -164,7 +164,7 @@ var GameLayer = cc.Layer.extend({
         }
 
         for (k = 0; k < this.towers.length; k++) {
-            if (this.towers[k].on) {
+            if (this.towers[k].off) {
                 this.towers[k].energy += this.powerPlant.powerRate / towersOn;            
             }
         }
