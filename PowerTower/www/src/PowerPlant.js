@@ -1,3 +1,23 @@
+var listener = cc.EventListener.create({
+    	event: cc.EventListener.MOUSE, 
+    	/*onMouseMove: function(event){   
+            console.log("move");
+            // do something...
+        }*/
+        onMouseUp: function(event){
+            console.log("up");
+            // do something...
+        }
+        /*onMouseDown: function(event){
+            console.log("down");
+            // do something...
+        },
+        onMouseScroll: function(event){
+            console.log("scroll");
+            // do something...
+        }*/
+    });
+
 var PowerPlant = Unit.extend({
     ctor: function() { 		
         this._super(this.health);	       
@@ -6,6 +26,7 @@ var PowerPlant = Unit.extend({
         this.powerMax = powerMax;*/
         this.sprite = new cc.Sprite(asset.powerplantlv1);
         this.addChild(this.sprite, 1);
+        cc.eventManager.addListener(listener.clone(), this);
     },
     health: 10000,
     healthMax: 10000,
@@ -52,3 +73,7 @@ var PowerPlant = Unit.extend({
     	}
     }
 });
+
+
+console.log(listener);
+console.log(PowerPlant);

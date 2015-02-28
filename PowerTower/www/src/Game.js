@@ -30,7 +30,6 @@ var GameLayer = cc.Layer.extend({
         this.addChild(enemy, 4);
         this.addChild(this.powerPlant, 3);
         enemy.beginMoveAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-
     }
 });
 
@@ -41,8 +40,10 @@ var Game = cc.Scene.extend({
         this.addChild(layer);
     }
 });
+console.log(Game);
 
 var flipY = function(y) {
     return cc.winSize.height - y;
 }
+
 
