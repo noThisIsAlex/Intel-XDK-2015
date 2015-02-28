@@ -22,7 +22,7 @@ var Enemy = Unit.extend({
             endPoint.y = parseInt(endPoint.y);
             console.log(endPoint);
             var lineLength = Math.sqrt((endPoint.x - startPoint.x) * (endPoint.x - startPoint.x) + (endPoint.y - startPoint.y) * (endPoint.y - startPoint.y));
-            actions.push(cc.moveTo(lineLength / this.speed, endPoint.x + object.x, flipY(endPoint.y + object.y)));
+            actions.push(cc.moveBy(lineLength / this.speed, endPoint.x - startPoint.x, -(endPoint.y - startPoint.y)));
         }
         var sequence = cc.sequence(actions);
         console.log(sequence);
