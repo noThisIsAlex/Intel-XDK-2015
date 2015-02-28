@@ -1,21 +1,15 @@
 var listener = cc.EventListener.create({
-    	event: cc.EventListener.MOUSE, 
-    	/*onMouseMove: function(event){   
-            console.log("move");
-            // do something...
-        }*/
-        onMouseUp: function(event){
-            console.log("up");
-            // do something...
+      event: cc.EventListener.TOUCH_ONE_BY_ONE,
+        // When "swallow touches" is true, then returning 'true' from the onTouchBegan method will "swallow" the touch event, preventing other listeners from using it.
+        swallowTouches: true,
+        //onTouchBegan event callback function                      
+        onTouchBegan: function (touch, event) { 
+   			console.log(touch);
+            console.log(event);
+            console.log(touch._point.x);
+            console.log(touch._point.y);
+            console.log("touchDown");
         }
-        /*onMouseDown: function(event){
-            console.log("down");
-            // do something...
-        },
-        onMouseScroll: function(event){
-            console.log("scroll");
-            // do something...
-        }*/
     });
 
 var PowerPlant = Unit.extend({
@@ -26,7 +20,8 @@ var PowerPlant = Unit.extend({
         this.powerMax = powerMax;*/
         this.sprite = new cc.Sprite(asset.powerplantlv1);
         this.addChild(this.sprite, 1);
-        cc.eventManager.addListener(listener.clone(), this);
+        //this.setTouchEnabled(true);
+        cc.eventManager.addListener(listener.clone(), this.sprite);
         this.healthBar.y = 60;
     },
     healthRate: 50,
