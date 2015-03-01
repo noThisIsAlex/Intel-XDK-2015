@@ -1,8 +1,6 @@
 
 function toDegrees(radians)
 {
-    console.log ("Got " + radians + " radians");
-    //console.log ("returning " + radians * (180.0 / Math.PI) + "degrees");
     var degrees = radians * (180.0 / Math.PI);
     return degrees;
 }
@@ -10,7 +8,7 @@ function toDegrees(radians)
 var GameLayer = cc.Layer.extend({
     sprite:null,
     powerPlant:null,
-    enemies: null,
+    enemyNumber: 1,
     towers: null,
     enemies: [],
     enemySpawn: null,
@@ -29,15 +27,9 @@ var GameLayer = cc.Layer.extend({
         
         // Add all the game objects to the layer
         // Get the properties from the tmx file
-
-        var enemy = new Enemy(100);
-
-        this.enemies.push(enemy);
         
         this.powerPlant = new PowerPlant();
         
-        console.log(this.powerPlant + "<<-----------");
-        console.log(this.powerPlant.power);
 
         var path, towerPositions;
         for (var i = 0; i < tilemap.objectGroups.length; ++i) {
@@ -69,25 +61,28 @@ var GameLayer = cc.Layer.extend({
         }
 
         this.powerPlant.powerRate = this.towers.length * (this.towers[0].energyUsage * 1.5);
-        console.log(this.powerPlant.powerRate + "<- POWER RATE")
         
         this.powerPlant.x = parseInt(path.polylinePoints[path.polylinePoints.length - 1].x) + path.x;
         this.powerPlant.y = cc.winSize.height - (parseInt(path.polylinePoints[path.polylinePoints.length - 1].y) + path.y);
-        console.log(this.powerPlant.x);
-        console.log(this.powerPlant.y);
         
        
         this.addChild(this.powerPlant, 3);
         this.scheduleUpdate();
          
         this.enemySpawn = this.schedule(function(){
-             var enemy = new Enemy(100);
+            var enemy;
+            if(this.enemyNumber % 15 == 0)
+                enemy = new Enemy(2000, 15, 1);
+            else if(this.enemyNumber % 5 == 0)
+                enemy = new Enemy(30, 70, 2);
+            else
+                enemy = new Enemy(100);
 
         this.enemies.push(enemy);
         this.addChild(enemy, 6);
         enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        this.numEnemies++;
-        }, 1.0, 30, 2);
+        this.enemyNumber++;
+        }, 1.0, 50, 2);
 
         this.towers.push(tower);
 
@@ -107,7 +102,6 @@ var GameLayer = cc.Layer.extend({
             
             if (enemy.attacking) {
                 if (enemy.ac <= 0) {
-                    console.log("Attack!");
                     this.powerPlant.takeDamage(enemy.power);
                     enemy.ac = enemy.attackCooldown;
                 }
@@ -120,7 +114,6 @@ var GameLayer = cc.Layer.extend({
             --tower.ac;
             if (tower.on) {
                 towersOn++
-                console.log("TOWER ON " + towersOn);
             }
             for (i = 0; i < this.enemies.length; ++i) {
                 enemy = this.enemies[i];
@@ -137,7 +130,6 @@ var GameLayer = cc.Layer.extend({
                         //if(tower.y < cc.winSize.height / 2)
                             //angl;
 
-                        console.log(angle);
                         var rotate = cc.RotateTo.create(0.1,angle);
                         tower.sprite.runAction(rotate);
 
@@ -149,7 +141,6 @@ var GameLayer = cc.Layer.extend({
                         this.bullets.push(bullet);
                         tower.ac = tower.attackCooldown;
                         tower.energy -= tower.energyUsage;
-                        console.log(tower.energy + "<-- AFTER SHOT")
                     }
                 }
             }
@@ -158,23 +149,18 @@ var GameLayer = cc.Layer.extend({
         var totalEnergyUsed = 0;
         //console.log(this.powerPlant.powerRate + "POWER RATE");
         for (k = 0; k < this.towers.length; k++) {
-            console.log(this.towers[k].on + " TOWER ON?");
             if (this.towers[k].on) {
-                console.log(this.towers[k].energyMax + " ENERGY MAX");
                 if (towersOn >= 1 && this.towers[k].energy < this.towers[k].energyMax) {
                     this.towers[k].energy += (this.powerPlant.powerRate / towersOn) - this.towers[k].energyUsage;            
                     totalEnergyUsed += this.powerPlant.powerRate / towersOn + this.towers[k].energyUsage;
-                    console.log(totalEnergyUsed + "NOT MAX");
                 } else if (towersOn >= 1) {
                     this.towers[k].energy = this.towers[k].energyMax;
                     totalEnergyUsed += this.powerPlant.powerRate / towersOn + this.towers[k].energyUsage;
-                    console.log(totalEnergyUsed + "MAX");
                 }
                 towersOn++;
             }
             //console.log(tower.energy + "<- AFTER POWER PLANT ROUND");
         }
-        console.log(totalEnergyUsed + "TOTAL ENERGY USED THIS ROUND.");
         
         //console.log(this.powerPlant.power + "<- BEFORE RECHARGE")
         if (this.powerPlant.power <= this.powerPlant.powerMax) {
