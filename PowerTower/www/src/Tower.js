@@ -7,13 +7,12 @@ var Tower = cc.Layer.extend
     attackCooldown: 100,
     ac: 0,
     power: 35,
-    totalPower: 35,
     range: 150,
     ManaBar: null,
     mana: null,
-     on: false,
+    on: false,
     energyMax: 500,
-    energyUsage: 50,
+    energyUsage: 100,
     energy: 500,
     ctor: function() 
     {
@@ -21,6 +20,9 @@ var Tower = cc.Layer.extend
 
         this.sprite = new cc.Sprite(asset.tower_upoff);
         this.addChild(this.sprite, 1);
+        
+        this.energy = 500;
+        this.ac = 0;
 
         this.ManaBar = cc.Layer.extend
         ({
@@ -46,9 +48,9 @@ var Tower = cc.Layer.extend
 		        this.addChild(this.redBar, 2);
 		        this.addChild(this.blueBar, 3);
 	    	},
-	    	displayMana: function() 
+	    	displayEnergy: function(energy, totalEnergy) 
 	    	{
-        		this.blueBar.scaleX = this.power / this.totalPower;
+        		this.blueBar.scaleX = energy / totalEnergy;
     		},
     	});
 		this.mana = new this.ManaBar();
