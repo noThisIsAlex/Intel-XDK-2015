@@ -1,8 +1,6 @@
 
 function toDegrees(radians)
 {
-    console.log ("Got " + radians + " radians");
-    //console.log ("returning " + radians * (180.0 / Math.PI) + "degrees");
     var degrees = radians * (180.0 / Math.PI);
     return degrees;
 }
@@ -10,7 +8,7 @@ function toDegrees(radians)
 var GameLayer = cc.Layer.extend({
     sprite:null,
     powerPlant:null,
-    enemies: null,
+    enemyNumber: 1,
     towers: null,
     enemies: null,
     enemySpawn: null,
@@ -29,7 +27,6 @@ var GameLayer = cc.Layer.extend({
         
         // Add all the game objects to the layer
         // Get the properties from the tmx file
-
         this.enemies = [];
         this.bullets = [];
         
@@ -70,21 +67,25 @@ var GameLayer = cc.Layer.extend({
         
         this.powerPlant.x = parseInt(path.polylinePoints[path.polylinePoints.length - 1].x) + path.x;
         this.powerPlant.y = cc.winSize.height - (parseInt(path.polylinePoints[path.polylinePoints.length - 1].y) + path.y);
-        console.log(this.powerPlant.x);
-        console.log(this.powerPlant.y);
         
        
         this.addChild(this.powerPlant, 3);
         this.scheduleUpdate();
          
         this.enemySpawn = this.schedule(function(){
-             var enemy = new Enemy(100);
+            var enemy;
+            if(this.enemyNumber % 15 == 0)
+                enemy = new Enemy(2000, 15, 1);
+            else if(this.enemyNumber % 5 == 0)
+                enemy = new Enemy(30, 70, 2);
+            else
+                enemy = new Enemy(100);
 
         this.enemies.push(enemy);
         this.addChild(enemy, 6);
         enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        this.numEnemies++;
-        }, 1.0, 30, 2);
+        this.enemyNumber++;
+        }, 1.0, 50, 2);
 
         this.towers.push(tower);
 
@@ -108,7 +109,6 @@ var GameLayer = cc.Layer.extend({
             
             if (enemy.attacking) {
                 if (enemy.ac <= 0) {
-                    console.log("Attack!");
                     this.powerPlant.takeDamage(enemy.power);
                     enemy.ac = enemy.attackCooldown;
                 }
@@ -157,6 +157,7 @@ var GameLayer = cc.Layer.extend({
                         tower.energy -= tower.energyUsage;
                         
                         cc.audioEngine.playEffect(asset.turret_fired, false);
+
                     }
                 }
             }

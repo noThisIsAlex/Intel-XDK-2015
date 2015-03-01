@@ -5,11 +5,28 @@ var Enemy = Unit.extend({
     power: 10, // attack damage per hit
     attackCooldown: 100,
     ac: 0,
-    ctor: function(health) {
+    ctor: function(health, custSpeed, custSprite) {
         this._super(health, health);
-        this.sprite = new cc.Sprite(asset.enemy);
-        this.addChild(this.sprite, 1);
         this.healthBar.y = 34;
+        console.log(custSprite);
+        if(custSpeed)
+            this.speed = custSpeed;
+        if(custSprite)
+        {
+            console.log("HERE");
+            if(custSprite === 1)
+            {
+                this.sprite = new cc.Sprite(asset.tank);
+                this.sprite.scaleX = -1;
+            }
+             if(custSprite === 2)
+                this.sprite = new cc.Sprite(asset.swarm);
+        }
+        else
+        {
+            this.sprite = new cc.Sprite(asset.enemy);
+        }
+        this.addChild(this.sprite, 1);
     },
     beginMovingAlongPathObject: function(object) {
         // Set the enemy position to the origin
