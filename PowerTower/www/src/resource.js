@@ -32,7 +32,7 @@ var asset = {
     turret_fired : "asset/sound_files/turret_fired.wav",
     taking_damage : "asset/sound_files/power_plant_hit.wav",
     lvl_up : "asset/sound_files/power_plant_lvl_up.wav",
-    
+    enemy_die : "asset/sound_files/enemy_die.wav"
 };
 
 var g_resources = [];

@@ -38,9 +38,6 @@ var GameLayer = cc.Layer.extend({
         this.enemies.push(enemy);
         
         this.powerPlant = new PowerPlant();
-        
-        console.log(this.powerPlant + "<<-----------");
-        console.log(this.powerPlant.power);
 
         var path, towerPositions;
         for (var i = 0; i < tilemap.objectGroups.length; ++i) {
@@ -138,6 +135,7 @@ var GameLayer = cc.Layer.extend({
                     this.removeChild(enemy);
                     this.enemies.splice(i, 1);
                     --i;
+                    cc.audioEngine.playEffect(asset.enemy_die, false);
                 }
                 
                 if (distance(tower, enemy) < tower.range && tower.energy >= tower.energyUsage) {
@@ -153,10 +151,12 @@ var GameLayer = cc.Layer.extend({
                         bullet.y = tower.y;
                         this.addChild(bullet, 7);
                         bullet.scheduleUpdate();
-                        this.bullets.push(bullet);                
+                        this.bullets.push(bullet);
                         tower.ac = tower.attackCooldown;
                         
                         tower.energy -= tower.energyUsage;
+                        
+                        cc.audioEngine.playEffect(asset.turret_fired, false);
                     }
                 }
             }
