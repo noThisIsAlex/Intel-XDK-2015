@@ -10,11 +10,9 @@ var Tower = cc.Layer.extend
     range: 150,
     ManaBar: null,
     mana: null,
-<<<<<<< HEAD
-    on: false,
-=======
+
      on: false,
->>>>>>> a4b03682128535a769520145e5977a3991c7f324
+
     energyMax: 500,
     energyUsage: 100,
     energy: 500,

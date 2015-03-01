@@ -127,7 +127,7 @@ var GameLayer = cc.Layer.extend({
             tower.mana.displayEnergy(tower.energy, tower.energyMax);
             --tower.ac;
             if (tower.on) {
-                towersOn++
+                towersOn++;
             }
             for (i = 0; i < this.enemies.length; ++i) {
                 enemy = this.enemies[i];
