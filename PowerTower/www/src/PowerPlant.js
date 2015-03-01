@@ -48,9 +48,9 @@ var PowerPlant = Unit.extend({
                 this.addChild(this.redBar, 2);
                 this.addChild(this.blueBar, 3);
             },
-            displayHealth: function() 
+            displayEnergy: function(energy, totalEnergy) 
             {
-                this.blueBar.scaleX = power / totalPower;
+                this.blueBar.scaleX = energy / totalEnergy;
             },
         });
         this.mana = new this.ManaBar();
@@ -60,7 +60,7 @@ var PowerPlant = Unit.extend({
     },
     healthRate: 50,
     power: 10000,
-    powerRate: 1,
+    powerRate: 2,
     powerMax: 10000,
     sprite: null,
     level: 1,

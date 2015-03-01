@@ -21,6 +21,7 @@ var asset = {
     tank: "asset/tiled_sprites/tank.png",
     title : "asset/tiled_sprites/title_big.png",
     swarm: "asset/tiled_sprites/swarm.png",
+    game_over : "asset/tiled_sprites/game_over_big.png",
     
     // soundfiles
     main_theme : "asset/sound_files/main_loop.wav",
