@@ -18,6 +18,6 @@ var GameOver = cc.Scene.extend({
     },
     onTouchBegan: function(touch, event) {
         cc.audioEngine.stopMusic(this.music);
-        cc.director.runScene(new Game());
+        cc.director.runScene(new Title());
     }
 });
