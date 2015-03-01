@@ -77,10 +77,15 @@ var GameLayer = cc.Layer.extend({
         this.numEnemies++;
         }, 1.0, 30, 5);
         
-        cc.audioEngine.playMusic(asset.all_loop, true);
+        this.music = cc.audioEngine.playMusic(asset.all_loop, true);
     },
     update: function() {
         var i, j, enemy;
+        
+        if (this.powerPlant.health <= 0) {
+            cc.audioEngine.stopMusic(this.music);
+            cc.director.runScene(new GameOver());
+        }
         
         for (i = 0; i < this.enemies.length; ++i) {
             enemy = this.enemies[i];

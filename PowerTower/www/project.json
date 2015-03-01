@@ -20,6 +20,7 @@
         "src/HealthBar.js",
         "src/utils.js",
         "src/Bullet.js",
-        "src/Title.js"
+        "src/Title.js",
+        "src/GameOver.js"
     ]
 }
