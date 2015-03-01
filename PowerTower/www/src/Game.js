@@ -1,4 +1,12 @@
 
+function toDegrees(radians)
+{
+    console.log ("Got " + radians + " radians");
+    //console.log ("returning " + radians * (180.0 / Math.PI) + "degrees");
+    var degrees = radians * (180.0 / Math.PI);
+    return degrees;
+}
+
 var GameLayer = cc.Layer.extend({
     sprite:null,
     powerPlant:null,
@@ -50,9 +58,10 @@ var GameLayer = cc.Layer.extend({
             if(tower.y > cc.winSize.height / 2)
             {
                 tower.mana.y = tower.mana.y + 25;
+                tower.sprite.scaleY = -1;    
             }
             else
-            {                
+            {         
                 tower.mana.y = tower.mana.y - 25;   
             }
             this.towers.push(tower);
@@ -88,7 +97,7 @@ var GameLayer = cc.Layer.extend({
         this.addChild(enemy, 6);
         enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
         this.numEnemies++;
-        }, 1.0, 30, 5);
+        }, 1.0, 30, 2);
 
         this.towers.push(tower);
     },
@@ -127,6 +136,14 @@ var GameLayer = cc.Layer.extend({
                 if (distance(tower, enemy) < tower.range) {
                     if (tower.ac <= 0 && tower.on) {
                         // Launch a bullet
+                        var angle = toDegrees( Math.atan( (enemy.x - tower.x) / (enemy.y - tower.y) ));
+                        //if(tower.y < cc.winSize.height / 2)
+                            //angl;
+
+                        console.log(angle);
+                        var rotate = cc.RotateTo.create(0.1,angle);
+                        tower.sprite.runAction(rotate);
+
                         var bullet = new Bullet(enemy, tower.power);
                         bullet.x = tower.x;
                         bullet.y = tower.y;
