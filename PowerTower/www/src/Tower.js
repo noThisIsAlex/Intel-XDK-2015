@@ -1,9 +1,6 @@
 var manaBarWidth = 50;
 var manaBarHeight = 12;
 
-cc.AudioEngine.preloadEffect(asset.power_on);
-cc.AudioEngine.preloadEffect(asset.power_off);
-
 var Tower = cc.Layer.extend
 ({
     sprite: null,
