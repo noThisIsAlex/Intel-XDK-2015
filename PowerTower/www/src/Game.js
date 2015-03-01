@@ -128,6 +128,7 @@ var GameLayer = cc.Layer.extend({
                     this.removeChild(enemy);
                     this.enemies.splice(i, 1);
                     --i;
+                    cc.audioEngine.playEffect(asset.enemy_die, false);
                 }
                 
                 if (distance(tower, enemy) < tower.range && tower.energy >= tower.energyUsage) {
@@ -149,7 +150,8 @@ var GameLayer = cc.Layer.extend({
                         this.bullets.push(bullet);
                         tower.ac = tower.attackCooldown;
                         tower.energy -= tower.energyUsage;
-                        console.log(tower.energy + "<-- AFTER SHOT")
+                        console.log(tower.energy + "<-- AFTER SHOT");
+                        cc.audioEngine.playEffect(asset.turret_fired, false);
                     }
                 }
             }
