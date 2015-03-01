@@ -73,7 +73,7 @@ cc.game.onStart = function(){
     // load resources defined in g_resources
     // see g_resources definition in www/src/resource
     cc.LoaderScene.preload(g_resources, function () {
-        cc.director.runScene(new Game());
+        cc.director.runScene(new Title());
     }, this);
 };
 cc.game.run();
