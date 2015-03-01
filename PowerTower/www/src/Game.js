@@ -110,6 +110,7 @@ var GameLayer = cc.Layer.extend({
         var towersOn = 0;
         for (j = 0; j < this.towers.length; ++j) {
             var tower = this.towers[j];
+            tower.mana.displayMana();
             --tower.ac;
             if (tower.on) {
                 towersOn++

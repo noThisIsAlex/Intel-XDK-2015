@@ -11,7 +11,7 @@ var Tower = cc.Layer.extend
     range: 150,
     ManaBar: null,
     mana: null,
-     on: true,
+     on: false,
     energyMax: 500,
     energyUsage: 50,
     energy: 500,
@@ -19,7 +19,7 @@ var Tower = cc.Layer.extend
     {
         this._super();
 
-        this.sprite = new cc.Sprite(asset.tower_up);
+        this.sprite = new cc.Sprite(asset.tower_upoff);
         this.addChild(this.sprite, 1);
 
         this.ManaBar = cc.Layer.extend
@@ -46,9 +46,9 @@ var Tower = cc.Layer.extend
 		        this.addChild(this.redBar, 2);
 		        this.addChild(this.blueBar, 3);
 	    	},
-	    	displayHealth: function() 
+	    	displayMana: function() 
 	    	{
-        		this.blueBar.scaleX = power / totalPower;
+        		this.blueBar.scaleX = this.power / this.totalPower;
     		},
     	});
 		this.mana = new this.ManaBar();

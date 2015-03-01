@@ -19,6 +19,7 @@ var asset = {
     fireball : "asset/tiled_sprites/fireball.png",
     tank_decoration : "asset/tiled_sprites/tank_decoration.png",
     title : "asset/tiled_sprites/title_big.png",
+    game_over : "asset/tiled_sprites/game_over_big.png",
     
     // soundfiles
     main_theme : "asset/sound_files/main_loop.wav",
