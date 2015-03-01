@@ -30,6 +30,8 @@ var GameLayer = cc.Layer.extend({
         this.enemies = [];
         this.bullets = [];
         
+        this.enemiesKilled = 0;
+        
         var enemy = new Enemy(100);
 
         this.enemies.push(enemy);
@@ -95,7 +97,8 @@ var GameLayer = cc.Layer.extend({
     update: function() {
         var i, j, enemy;
         
-        if (this.enemyNumber >= 50 && this.enemies.length === 0) {
+        if (this.enemiesKilled >= 51) { // count the extra first enemy
+            console.log("Win!");
             cc.audioEngine.stopMusic(this.music);
             cc.director.runScene(new Win());
         }
@@ -140,6 +143,7 @@ var GameLayer = cc.Layer.extend({
                 if (enemy.health <= 0) {
                     this.removeChild(enemy);
                     this.enemies.splice(i, 1);
+                    this.enemiesKilled++;
                     --i;
                     cc.audioEngine.playEffect(asset.enemy_die, false);
                 }

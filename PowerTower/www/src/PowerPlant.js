@@ -60,7 +60,7 @@ var PowerPlant = Unit.extend({
     },
     healthRate: 50,
     power: 10000,
-    powerRate: 3,
+    powerRate: 3.5,
     powerMax: 10000,
     sprite: null,
     level: 1,
