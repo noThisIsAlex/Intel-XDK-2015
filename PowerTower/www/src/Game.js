@@ -90,9 +90,7 @@ var GameLayer = cc.Layer.extend({
         }, 1.0, 30, 2);
 
         this.towers.push(tower);
-        
-        cc.AudioEngine.preloadEffect(asset.power_on);
-        cc.AudioEngine.preloadEffect(asset.power_off);
+
         cc.audioEngine.playMusic(asset.all_loop, true);
 
     },
