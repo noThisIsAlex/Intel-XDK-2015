@@ -18,7 +18,7 @@ var asset = {
 	tower_upoff: "asset/tiled_sprites/Basic_Tower_Off_p1.png",
     fireball : "asset/tiled_sprites/fireball.png",
     tank_decoration : "asset/tiled_sprites/tank_decoration.png",
-    title : "asset/tiled_sprites/title.png",
+    title : "asset/tiled_sprites/title_big.png",
     
     // soundfiles
     main_theme : "asset/sound_files/main_loop.wav",
