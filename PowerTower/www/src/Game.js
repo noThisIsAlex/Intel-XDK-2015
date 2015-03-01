@@ -77,6 +77,8 @@ var GameLayer = cc.Layer.extend({
         this.numEnemies++;
         }, 1.0, 30, 5);
         
+        cc.AudioEngine.preloadEffect(asset.power_on);
+        cc.AudioEngine.preloadEffect(asset.power_off);
         cc.audioEngine.playMusic(asset.all_loop, true);
     },
     update: function() {
@@ -119,7 +121,7 @@ var GameLayer = cc.Layer.extend({
                         bullet.y = tower.y;
                         this.addChild(bullet, 7);
                         bullet.scheduleUpdate();
-                        this.bullets.push(bullet);                
+                        this.bullets.push(bullet);
                         tower.ac = tower.attackCooldown;
                     }
                 }

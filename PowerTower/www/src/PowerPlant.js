@@ -55,12 +55,15 @@ var PowerPlant = Unit.extend({
     	console.log(event.getCurrentTarget());
     	if (this.level == 1) {
     		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv1);
+            cc.AudioEngine.playEffect(asset.powerplantlv1, false);
     		console.log("level1");
     	} else if (this.level == 2) {
     		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv2);
+            cc.AudioEngine.playEffect(asset.powerplantlv1, false);
     		console.log("level2");
     	} else if (this.level == 3) {
     		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv3);
+            cc.AudioEngine.playEffect(asset.powerplantlv1, false);
     		console.log("level3");
     	} else if (this.level > 3) {
     		event.getCurrentTarget().sprite.setTexture(asset.powerplantlv1);
