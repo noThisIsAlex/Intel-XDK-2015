@@ -1,5 +1,9 @@
+var manaBarWidth = 50;
+var manaBarHeight = 12;
 
 var PowerPlant = Unit.extend({
+    ManaBar: null,
+    mana: null,
     ctor: function() {	
         this._super(1500, 1500);	       
         /*this.power = power;
@@ -9,21 +13,55 @@ var PowerPlant = Unit.extend({
         this.addChild(this.sprite, 1);
         console.log(this.sprite);
         //this.setTouchEnabled(true);
-        var listener = cc.EventListener.create({
+	  /* var listener = cc.EventListener.create({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             // When "swallow touches" is true, then returning 'true' from the onTouchBegan method will "swallow" the touch event, preventing other listeners from using it.
             swallowTouches: true,
             //onTouchBegan event callback function                      
             onTouchBegan: this.onTouchBegan
         }); 
-        cc.eventManager.addListener(listener, this);
+        cc.eventManager.addListener(listener, this);*/
         this.healthBar.y = 60;
         console.log(this.health);
+        //mana bar
+        this.ManaBar = cc.Layer.extend
+        ({
+            blackBar: null,
+            greenBar: null,
+            redBar: null,
+            ctor: function() 
+            {
+                this._super();
+                this.blackBar = new cc.LayerColor(cc.color(0, 0, 0, 255), manaBarWidth, manaBarHeight);
+                this.blueBar = new cc.LayerColor(cc.color(0, 0, 200, 255), manaBarWidth - 2, manaBarHeight - 2);
+                this.redBar = new cc.LayerColor(cc.color(255, 0, 0, 255), manaBarWidth - 2, manaBarHeight - 2);
+                
+                this.blackBar.x = -manaBarWidth / 2;
+                this.blackBar.y = -manaBarHeight / 2;
+                this.blueBar.x = -manaBarWidth / 2 + 1;
+                this.blueBar.y = -manaBarHeight / 2 + 1;
+                this.blueBar.anchorX = 0;
+                this.redBar.x = this.blueBar.x;
+                this.redBar.y = this.blueBar.y;    
+                
+                this.addChild(this.blackBar, 1);
+                this.addChild(this.redBar, 2);
+                this.addChild(this.blueBar, 3);
+            },
+            displayHealth: function() 
+            {
+                this.blueBar.scaleX = power / totalPower;
+            },
+        });
+        this.mana = new this.ManaBar();
+        //console.log(this.ManaBar);
+        this.addChild(this.mana, 2);
+        
     },
     healthRate: 50,
-    power: 1000,
+    power: 10000,
     powerRate: 1,
-    powerMax: 1000,
+    powerMax: 10000,
     sprite: null,
     level: 1,
      
@@ -99,7 +137,7 @@ var PowerPlant = Unit.extend({
             cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
 	        target.opacity = 180;
     	    console.log("Yes");
-    	    event.getCurrentTarget().upgrade(event);
+    //	    event.getCurrentTarget().upgrade(event);
     	} else {
     		console.log("Nope");
     	}
