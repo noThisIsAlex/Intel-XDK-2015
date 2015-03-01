@@ -71,7 +71,8 @@ var GameLayer = cc.Layer.extend({
        
         this.addChild(this.powerPlant, 3);
         this.scheduleUpdate();
-         
+        
+        this.enemyNumber = 0;
         this.enemySpawn = this.schedule(function(){
             var enemy;
             if(this.enemyNumber % 15 == 0)
@@ -81,10 +82,10 @@ var GameLayer = cc.Layer.extend({
             else
                 enemy = new Enemy(100);
 
-        this.enemies.push(enemy);
-        this.addChild(enemy, 6);
-        enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
-        this.enemyNumber++;
+            this.enemies.push(enemy);
+            this.addChild(enemy, 6);
+            enemy.beginMovingAlongPathObject(tilemap.objectGroups[0].getObjects()[0]);
+            this.enemyNumber++;
         }, 1.0, 50, 2);
 
         this.towers.push(tower);
@@ -93,6 +94,11 @@ var GameLayer = cc.Layer.extend({
     },
     update: function() {
         var i, j, enemy;
+        
+        if (this.enemyNumber >= 50 && this.enemies.length === 0) {
+            cc.audioEngine.stopMusic(this.music);
+            cc.director.runScene(new Win());
+        }
         
         if (this.powerPlant.health <= 0) {
             cc.audioEngine.stopMusic(this.music);

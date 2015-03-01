@@ -21,6 +21,7 @@
         "src/utils.js",
         "src/Bullet.js",
         "src/Title.js",
-        "src/GameOver.js"
+        "src/GameOver.js",
+        "src/Win.js"
     ]
 }
